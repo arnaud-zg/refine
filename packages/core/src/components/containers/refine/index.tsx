@@ -230,7 +230,7 @@ export const Refine: React.FC<RefineProps> = ({
         ...reactQueryWithDefaults.clientConfig.defaultOptions,
         queries: {
           refetchOnWindowFocus: false,
-          keepPreviousData: true,
+          placeholderData: (previousData: unknown) => previousData,
           ...reactQueryWithDefaults.clientConfig.defaultOptions?.queries,
         },
       },

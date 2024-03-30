@@ -62,7 +62,7 @@ export const ForgotPasswordPage: React.FC<ResetPassworProps> = ({
 
   const ActiveLink = routerType === "legacy" ? LegacyLink : Link;
 
-  const { mutate: forgotPassword, isLoading } =
+  const { mutate: forgotPassword, isPending } =
     useForgotPassword<ForgotPasswordFormTypes>();
 
   const PageTitle =
@@ -170,7 +170,7 @@ export const ForgotPasswordPage: React.FC<ResetPassworProps> = ({
             type="primary"
             size="large"
             htmlType="submit"
-            loading={isLoading}
+            loading={isPending}
             block
           >
             {translate(

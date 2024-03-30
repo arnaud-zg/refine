@@ -14,10 +14,11 @@ import {
 export type UseSelectReturnType<
   TData extends BaseRecord = BaseRecord,
   TOption extends BaseOption = BaseOption,
+  TError = HttpError,
 > = {
   selectProps: SelectProps<TOption>;
-  queryResult: QueryObserverResult<GetListResponse<TData>>;
-  defaultValueQueryResult: QueryObserverResult<GetManyResponse<TData>>;
+  queryResult: QueryObserverResult<GetListResponse<TData>, TError>;
+  defaultValueQueryResult: QueryObserverResult<GetManyResponse<TData>, TError>;
 };
 
 /**
@@ -38,7 +39,7 @@ export const useSelect = <
   TOption extends BaseOption = BaseOption,
 >(
   props: UseSelectProps<TQueryFnData, TError, TData>,
-): UseSelectReturnType<TData, TOption> => {
+): UseSelectReturnType<TData, TOption, TError> => {
   const { queryResult, defaultValueQueryResult, onSearch, options } =
     useSelectCore<TQueryFnData, TError, TData, TOption>(props);
 

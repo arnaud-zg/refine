@@ -292,7 +292,7 @@ export const useCreate = <
   });
 
   const { elapsedTime } = useLoadingOvertime({
-    isLoading: mutation.isLoading,
+    isLoading: mutation.isPending,
     interval: overtimeOptions?.interval,
     onInterval: overtimeOptions?.onInterval,
   });

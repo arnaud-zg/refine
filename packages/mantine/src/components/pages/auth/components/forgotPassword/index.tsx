@@ -80,7 +80,7 @@ export const ForgotPasswordPage: React.FC<ResetPassworProps> = ({
   });
   const { getInputProps, onSubmit } = form;
 
-  const { mutate: forgotPassword, isLoading } =
+  const { mutate: forgotPassword, isPending } =
     useForgotPassword<ForgotPasswordFormTypes>();
 
   const PageTitle =
@@ -131,7 +131,7 @@ export const ForgotPasswordPage: React.FC<ResetPassworProps> = ({
               </Text>
             </Group>
           )}
-          <Button mt="lg" fullWidth size="md" type="submit" loading={isLoading}>
+          <Button mt="lg" fullWidth size="md" type="submit" loading={isPending}>
             {translate(
               "pages.forgotPassword.buttons.submit",
               "Send reset instructions",

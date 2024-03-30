@@ -1,14 +1,14 @@
-import { useCallback } from "react";
 import {
   InvalidateOptions,
   InvalidateQueryFilters,
   useQueryClient,
 } from "@tanstack/react-query";
+import { useCallback } from "react";
 
-import { useResource } from "@hooks/resource";
 import { pickDataProvider } from "@definitions";
-import { BaseKey, IQueryKeys } from "../../interfaces";
+import { useResource } from "@hooks/resource";
 import { useKeys } from "@hooks/useKeys";
+import { BaseKey, IQueryKeys } from "../../interfaces";
 
 export type UseInvalidateProp = {
   resource?: string;
@@ -49,35 +49,45 @@ export const useInvalidate = (): ((
           switch (key) {
             case "all":
               return queryClient.invalidateQueries(
-                keys().data(dp).get(preferLegacyKeys),
-                invalidationFilters,
+                {
+                  ...invalidationFilters,
+                  queryKey: keys().data(dp).get(preferLegacyKeys),
+                },
                 invalidationOptions,
               );
             case "list":
               return queryClient.invalidateQueries(
-                queryKey.action("list").get(preferLegacyKeys),
-                invalidationFilters,
+                {
+                  ...invalidationFilters,
+                  queryKey: queryKey.action("list").get(preferLegacyKeys),
+                },
                 invalidationOptions,
               );
             case "many":
               return queryClient.invalidateQueries(
-                queryKey.action("many").get(preferLegacyKeys),
-                invalidationFilters,
+                {
+                  ...invalidationFilters,
+                  queryKey: queryKey.action("many").get(preferLegacyKeys),
+                },
                 invalidationOptions,
               );
             case "resourceAll":
               return queryClient.invalidateQueries(
-                queryKey.get(preferLegacyKeys),
-                invalidationFilters,
+                {
+                  ...invalidationFilters,
+                  queryKey: queryKey.get(preferLegacyKeys),
+                },
                 invalidationOptions,
               );
             case "detail":
               return queryClient.invalidateQueries(
-                queryKey
-                  .action("one")
-                  .id(id || "")
-                  .get(preferLegacyKeys),
-                invalidationFilters,
+                {
+                  ...invalidationFilters,
+                  queryKey: queryKey
+                    .action("one")
+                    .id(id || "")
+                    .get(preferLegacyKeys),
+                },
                 invalidationOptions,
               );
             default:

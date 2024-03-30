@@ -506,7 +506,7 @@ describe("useImport hook", () => {
       });
 
       await waitFor(() => {
-        expect(result.current.isLoading).toBe(false);
+        expect(result.current.isPending).toBe(false);
       });
 
       await waitFor(() => {

@@ -262,7 +262,7 @@ describe("useIsAuthenticated Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyCheckAuthMock).not.toHaveBeenCalled();
@@ -294,7 +294,7 @@ describe("useIsAuthenticated Hook authProvider selection", () => {
     );
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyCheckAuthMock).toHaveBeenCalled();

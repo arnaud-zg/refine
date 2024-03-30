@@ -148,6 +148,7 @@ export const useShow = <
     resource: identifier,
     id: showId ?? "",
     queryOptions: {
+      queryKey: [identifier],
       enabled: showId !== undefined,
       ...queryOptions,
     },

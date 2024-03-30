@@ -711,7 +711,7 @@ describe("useUpdatePassword Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyUpdatePassword).not.toHaveBeenCalled();
@@ -752,7 +752,7 @@ describe("useUpdatePassword Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyUpdatePassword).toHaveBeenCalled();

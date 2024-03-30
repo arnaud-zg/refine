@@ -682,14 +682,14 @@ export const renderer = ({
                 )} }`
               : ""
         });
-        const { data, isLoading } = queryResult;
+        const { data, isPending } = queryResult;
     
         const ${recordName} = data?.data;
     
         ${relationHooksCode}
 
         return (
-            <Show isLoading={isLoading}>
+            <Show isLoading={isPending}>
                 <Stack gap={1}>
                     ${renderedFields.join("")}
                 </Stack>

@@ -127,6 +127,6 @@ export const useImport = <
       loading: isLoading,
     },
     mutationResult,
-    isLoading,
+    isLoading: isLoading,
   };
 };

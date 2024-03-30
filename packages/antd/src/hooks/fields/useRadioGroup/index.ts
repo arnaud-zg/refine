@@ -15,11 +15,12 @@ import {
 export type UseRadioGroupReturnType<
   TData extends BaseRecord = BaseRecord,
   TOption extends BaseOption = BaseOption,
+  TError = HttpError,
 > = {
   radioGroupProps: Omit<React.ComponentProps<typeof Radio.Group>, "options"> & {
     options: TOption[];
   };
-  queryResult: QueryObserverResult<GetListResponse<TData>>;
+  queryResult: QueryObserverResult<GetListResponse<TData>, TError>;
 };
 
 type UseRadioGroupProps<TQueryFnData, TError, TData> = Omit<

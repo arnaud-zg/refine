@@ -40,9 +40,9 @@ import {
   MetaQuery,
   MutationMode,
   OptimisticUpdateManyMapType,
-  PrevContext as UpdateContext,
   QueryResponse,
   SuccessErrorNotification,
+  PrevContext as UpdateContext,
   UpdateManyResponse,
 } from "../../interfaces";
 import {
@@ -305,25 +305,24 @@ export const useUpdateMany = <
       const mutationModePropOrContext = mutationMode ?? mutationModeContext;
 
       await queryClient.cancelQueries(
-        resourceKeys.get(preferLegacyKeys),
-        undefined,
-        {
-          silent: true,
-        },
+        { queryKey: resourceKeys.get(preferLegacyKeys) },
+        { silent: true },
       );
 
-      const previousQueries = queryClient.getQueriesData<QueryResponse<TData>>(
-        resourceKeys.get(preferLegacyKeys),
-      );
+      const previousQueries = queryClient.getQueriesData<QueryResponse<TData>>({
+        queryKey: resourceKeys.get(preferLegacyKeys),
+      });
 
       if (mutationModePropOrContext !== "pessimistic") {
         if (optimisticUpdateMap.list) {
           // Set the previous queries to the new ones:
           queryClient.setQueriesData(
-            resourceKeys
-              .action("list")
-              .params(preferredMeta ?? {})
-              .get(preferLegacyKeys),
+            {
+              queryKey: resourceKeys
+                .action("list")
+                .params(preferredMeta ?? {})
+                .get(preferLegacyKeys),
+            },
             (previous?: GetListResponse<TData> | null) => {
               if (typeof optimisticUpdateMap.list === "function") {
                 return optimisticUpdateMap.list(previous, values, ids);
@@ -360,7 +359,7 @@ export const useUpdateMany = <
 
         if (optimisticUpdateMap.many) {
           queryClient.setQueriesData(
-            resourceKeys.action("many").get(preferLegacyKeys),
+            { queryKey: resourceKeys.action("many").get(preferLegacyKeys) },
             (previous?: GetManyResponse<TData> | null) => {
               if (typeof optimisticUpdateMap.many === "function") {
                 return optimisticUpdateMap.many(previous, values, ids);
@@ -396,11 +395,13 @@ export const useUpdateMany = <
         if (optimisticUpdateMap.detail) {
           for (const id of ids) {
             queryClient.setQueriesData(
-              resourceKeys
-                .action("one")
-                .id(id)
-                .params(preferredMeta ?? {})
-                .get(preferLegacyKeys),
+              {
+                queryKey: resourceKeys
+                  .action("one")
+                  .id(id)
+                  .params(preferredMeta ?? {})
+                  .get(preferLegacyKeys),
+              },
               (previous?: GetOneResponse<TData> | null) => {
                 if (typeof optimisticUpdateMap.detail === "function") {
                   return optimisticUpdateMap.detail(previous, values, id);
@@ -605,7 +606,7 @@ export const useUpdateMany = <
   });
 
   const { elapsedTime } = useLoadingOvertime({
-    isLoading: mutation.isLoading,
+    isLoading: mutation.isPending,
     interval: overtimeOptions?.interval,
     onInterval: overtimeOptions?.onInterval,
   });

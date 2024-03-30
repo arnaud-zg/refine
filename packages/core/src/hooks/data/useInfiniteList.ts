@@ -258,6 +258,7 @@ export const useInfiniteList = <
 
       return getList<TQueryFnData>({
         resource: resource.name,
+        // @ts-expect-error
         pagination: paginationProperties,
         hasPagination: isServerPagination,
         filters: prefferedFilters,
@@ -267,6 +268,7 @@ export const useInfiniteList = <
           ...combinedMeta,
           queryContext: {
             queryKey,
+            // @ts-expect-error
             pageParam,
             signal,
           },
@@ -275,6 +277,7 @@ export const useInfiniteList = <
           ...combinedMeta,
           queryContext: {
             queryKey,
+            // @ts-expect-error
             pageParam,
             signal,
           },
@@ -291,7 +294,9 @@ export const useInfiniteList = <
     getNextPageParam: (lastPage) => getNextPageParam(lastPage),
     getPreviousPageParam: (lastPage) => getPreviousPageParam(lastPage),
     ...queryOptions,
+    // @ts-expect-error
     onSuccess: (data) => {
+      // @ts-expect-error
       queryOptions?.onSuccess?.(data);
 
       const notificationConfig =
@@ -303,6 +308,7 @@ export const useInfiniteList = <
     },
     onError: (err: TError) => {
       checkError(err);
+      // @ts-expect-error
       queryOptions?.onError?.(err);
 
       const notificationConfig =

@@ -155,6 +155,7 @@ export const useCustom = <
           ...(preferredMeta || {}),
         })
         .get(preferLegacyKeys),
+      // @ts-expect-error
       queryFn: ({ queryKey, pageParam, signal }) =>
         custom<TQueryFnData>({
           url,
@@ -164,6 +165,7 @@ export const useCustom = <
             ...combinedMeta,
             queryContext: {
               queryKey,
+              // @ts-expect-error
               pageParam,
               signal,
             },
@@ -172,13 +174,16 @@ export const useCustom = <
             ...combinedMeta,
             queryContext: {
               queryKey,
+              // @ts-expect-error
               pageParam,
               signal,
             },
           },
         }),
       ...queryOptions,
+      // @ts-expect-error
       onSuccess: (data) => {
+        // @ts-expect-error
         queryOptions?.onSuccess?.(data);
 
         const notificationConfig =
@@ -193,6 +198,7 @@ export const useCustom = <
       },
       onError: (err: TError) => {
         checkError(err);
+        // @ts-expect-error
         queryOptions?.onError?.(err);
 
         const notificationConfig =

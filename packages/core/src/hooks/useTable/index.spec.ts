@@ -41,7 +41,7 @@ describe("useTable Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.tableQueryResult.isLoading).toBeTruthy();
+      expect(!result.current.tableQueryResult.isPending).toBeTruthy();
     });
 
     const {
@@ -76,7 +76,7 @@ describe("useTable Hook", () => {
     );
 
     await waitFor(() => {
-      expect(!result.current.tableQueryResult.isLoading).toBeTruthy();
+      expect(!result.current.tableQueryResult.isPending).toBeTruthy();
     });
 
     const { pageSize, current, pageCount } = result.current;
@@ -105,7 +105,7 @@ describe("useTable Hook", () => {
     );
 
     await waitFor(() => {
-      expect(!result.current.tableQueryResult.isLoading).toBeTruthy();
+      expect(!result.current.tableQueryResult.isPending).toBeTruthy();
     });
 
     const {
@@ -135,7 +135,7 @@ describe("useTable Hook", () => {
     );
 
     await waitFor(() => {
-      expect(!result.current.tableQueryResult.isLoading).toBeTruthy();
+      expect(!result.current.tableQueryResult.isPending).toBeTruthy();
     });
 
     const {

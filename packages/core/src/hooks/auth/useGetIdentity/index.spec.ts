@@ -244,7 +244,7 @@ describe("useGetIdentity Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeFalsy();
+      expect(!result.current.isPending).toBeFalsy();
     });
 
     expect(legacyGetUserIdentityMock).not.toHaveBeenCalled();
@@ -277,7 +277,7 @@ describe("useGetIdentity Hook authProvider selection", () => {
     );
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeFalsy();
+      expect(!result.current.isPending).toBeFalsy();
     });
 
     expect(legacyGetUserIdentityMock).toHaveBeenCalled();

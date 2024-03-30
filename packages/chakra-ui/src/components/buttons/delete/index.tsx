@@ -82,6 +82,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
     action: "delete",
     params: { id: recordItemId ?? id, resource },
     queryOptions: {
+      queryKey: [recordItemId ?? id, resource],
       enabled: accessControlEnabled,
     },
   });

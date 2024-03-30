@@ -365,6 +365,7 @@ export const useForm = <
     resource: identifier,
     id: id ?? "",
     queryOptions: {
+      queryKey: [identifier],
       enabled: enableQuery,
       ...queryOptions,
     },
@@ -383,7 +384,7 @@ export const useForm = <
       mutationOptions: createMutationOptions,
     },
   );
-  const { mutate: mutateCreate, isLoading: isLoadingCreate } =
+  const { mutate: mutateCreate, isPending: isPendingCreate } =
     mutationResultCreate;
 
   const mutationResultUpdate = useUpdate<TResponse, TResponseError, TVariables>(
@@ -391,7 +392,7 @@ export const useForm = <
       mutationOptions: updateMutationOptions,
     },
   );
-  const { mutate: mutateUpdate, isLoading: isLoadingUpdate } =
+  const { mutate: mutateUpdate, isPending: isPendingUpdate } =
     mutationResultUpdate;
 
   const autoSaveMutation = useUpdate<TResponse, TResponseError, TVariables>({});
@@ -577,13 +578,13 @@ export const useForm = <
   };
 
   const createResult = {
-    formLoading: isFetchingQuery || isLoadingCreate,
+    formLoading: isFetchingQuery || isPendingCreate,
     mutationResult: mutationResultCreate,
     onFinish: onFinishCreate,
   };
 
   const editResult = {
-    formLoading: isFetchingQuery || isLoadingUpdate,
+    formLoading: isFetchingQuery || isPendingUpdate,
     mutationResult: mutationResultUpdate,
     onFinish: onFinishUpdate,
   };
@@ -591,7 +592,7 @@ export const useForm = <
   const result = isCreate || isClone ? createResult : editResult;
 
   const { elapsedTime } = useLoadingOvertime({
-    isLoading: result.mutationResult.isLoading || queryResult.isFetching,
+    isLoading: result.mutationResult.isPending || queryResult.isFetching,
     interval: overtimeOptions?.interval,
     onInterval: overtimeOptions?.onInterval,
   });

@@ -7,7 +7,7 @@ export const AutoSaveIndicator: React.FC<AutoSaveIndicatorProps> = ({
   elements: {
     success = <Message key="autoSave.success" defaultMessage="saved" />,
     error = <Message key="autoSave.error" defaultMessage="auto save failure" />,
-    loading = <Message key="autoSave.loading" defaultMessage="saving..." />,
+    pending = <Message key="autoSave.pending" defaultMessage="saving..." />,
     idle = <Message key="autoSave.idle" defaultMessage="waiting for changes" />,
   } = {},
 }) => {
@@ -16,8 +16,8 @@ export const AutoSaveIndicator: React.FC<AutoSaveIndicatorProps> = ({
       return <>{success}</>;
     case "error":
       return <>{error}</>;
-    case "loading":
-      return <>{loading}</>;
+    case "pending":
+      return <>{pending}</>;
     default:
       return <>{idle}</>;
   }

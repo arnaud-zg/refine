@@ -247,6 +247,7 @@ export const useList = <
         }),
       })
       .get(preferLegacyKeys),
+    // @ts-expect-error
     queryFn: ({ queryKey, pageParam, signal }) => {
       return getList<TQueryFnData>({
         resource: resource?.name ?? "",
@@ -259,6 +260,7 @@ export const useList = <
           ...combinedMeta,
           queryContext: {
             queryKey,
+            // @ts-expect-error
             pageParam,
             signal,
           },
@@ -267,6 +269,7 @@ export const useList = <
           ...combinedMeta,
           queryContext: {
             queryKey,
+            // @ts-expect-error
             pageParam,
             signal,
           },
@@ -297,7 +300,9 @@ export const useList = <
 
       return data as unknown as GetListResponse<TData>;
     },
+    // @ts-expect-error
     onSuccess: (data) => {
+      // @ts-expect-error
       queryOptions?.onSuccess?.(data);
 
       const notificationConfig =
@@ -309,6 +314,7 @@ export const useList = <
     },
     onError: (err: TError) => {
       checkError(err);
+      // @ts-expect-error
       queryOptions?.onError?.(err);
 
       const notificationConfig =

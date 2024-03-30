@@ -29,7 +29,7 @@ export const AutoSaveIndicator: React.FC<AutoSaveIndicatorProps> = ({
     ),
     loading = (
       <Message
-        key="autoSave.loading"
+        key="autoSave.pending"
         defaultMessage="saving..."
         icon={<SyncOutlinedIcon fontSize="small" />}
       />

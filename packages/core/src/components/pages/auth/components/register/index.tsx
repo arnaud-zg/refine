@@ -40,7 +40,7 @@ export const RegisterPage: React.FC<RegisterProps> = ({
   const translate = useTranslate();
 
   const authProvider = useActiveAuthProvider();
-  const { mutate: register, isLoading } = useRegister({
+  const { mutate: register, isPending } = useRegister({
     v3LegacyAuthProviderCompatible: Boolean(authProvider?.isLegacy),
   });
 
@@ -133,7 +133,7 @@ export const RegisterPage: React.FC<RegisterProps> = ({
               <input
                 type="submit"
                 value={translate("pages.register.buttons.submit", "Sign up")}
-                disabled={isLoading}
+                disabled={isPending}
               />
               {loginLink ?? (
                 <>

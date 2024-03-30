@@ -173,6 +173,7 @@ export const useOne = <
         ...(preferredMeta || {}),
       })
       .get(preferLegacyKeys),
+    // @ts-expect-error
     queryFn: ({ queryKey, pageParam, signal }) =>
       getOne<TQueryFnData>({
         resource: resource?.name ?? "",
@@ -181,6 +182,7 @@ export const useOne = <
           ...combinedMeta,
           queryContext: {
             queryKey,
+            // @ts-expect-error
             pageParam,
             signal,
           },
@@ -189,6 +191,7 @@ export const useOne = <
           ...combinedMeta,
           queryContext: {
             queryKey,
+            // @ts-expect-error
             pageParam,
             signal,
           },
@@ -199,7 +202,9 @@ export const useOne = <
       typeof queryOptions?.enabled !== "undefined"
         ? queryOptions?.enabled
         : typeof id !== "undefined",
+    // @ts-expect-error
     onSuccess: (data) => {
+      // @ts-expect-error
       queryOptions?.onSuccess?.(data);
 
       const notificationConfig =
@@ -218,6 +223,7 @@ export const useOne = <
     },
     onError: (err: TError) => {
       checkError(err);
+      // @ts-expect-error
       queryOptions?.onError?.(err);
 
       const notificationConfig =

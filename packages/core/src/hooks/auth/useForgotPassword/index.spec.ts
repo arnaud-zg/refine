@@ -560,7 +560,7 @@ describe("useForgotPassword Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyForgotPasswordMock).not.toHaveBeenCalled();
@@ -601,7 +601,7 @@ describe("useForgotPassword Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyForgotPasswordMock).toHaveBeenCalled();

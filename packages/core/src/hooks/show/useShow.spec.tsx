@@ -396,13 +396,13 @@ describe("useShow Hook", () => {
     );
 
     await waitFor(() => {
-      expect(result.current.queryResult.isLoading).toBeTruthy();
+      expect(result.current.queryResult.isPending).toBeTruthy();
       expect(result.current.overtime.elapsedTime).toBe(900);
       expect(onInterval).toBeCalled();
     });
 
     await waitFor(() => {
-      expect(!result.current.queryResult.isLoading).toBeTruthy();
+      expect(!result.current.queryResult.isPending).toBeTruthy();
       expect(result.current.overtime.elapsedTime).toBeUndefined();
     });
   });

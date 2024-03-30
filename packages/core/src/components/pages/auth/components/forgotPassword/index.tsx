@@ -37,7 +37,7 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordProps> = ({
 
   const [email, setEmail] = useState("");
 
-  const { mutate: forgotPassword, isLoading } =
+  const { mutate: forgotPassword, isPending } =
     useForgotPassword<ForgotPasswordFormTypes>();
 
   const renderLink = (link: string, text?: string) => {
@@ -80,7 +80,7 @@ export const ForgotPasswordPage: React.FC<ForgotPasswordProps> = ({
           />
           <input
             type="submit"
-            disabled={isLoading}
+            disabled={isPending}
             value={translate(
               "pages.forgotPassword.buttons.submit",
               "Send reset instructions",

@@ -64,6 +64,7 @@ export const CloneButton: React.FC<CloneButtonProps> = ({
     action: "create",
     params: { id: recordItemId ?? id, resource },
     queryOptions: {
+      queryKey: [recordItemId ?? id, resource],
       enabled: accessControlEnabled,
     },
   });

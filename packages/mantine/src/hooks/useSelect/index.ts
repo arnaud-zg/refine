@@ -15,14 +15,15 @@ import {
 export type UseSelectReturnType<
   TData extends BaseRecord = BaseRecord,
   TOption extends BaseOption = BaseOption,
+  TError = HttpError,
 > = {
   selectProps: Prettify<
     Omit<SelectProps, "data"> & {
       data: TOption[];
     }
   >;
-  queryResult: QueryObserverResult<GetListResponse<TData>>;
-  defaultValueQueryResult: QueryObserverResult<GetManyResponse<TData>>;
+  queryResult: QueryObserverResult<GetListResponse<TData>, TError>;
+  defaultValueQueryResult: QueryObserverResult<GetManyResponse<TData>, TError>;
 };
 
 /**

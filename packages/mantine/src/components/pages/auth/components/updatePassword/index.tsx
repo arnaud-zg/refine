@@ -69,7 +69,7 @@ export const UpdatePasswordPage: React.FC<UpdatePassworProps> = ({
   const { getInputProps, onSubmit } = form;
 
   const authProvider = useActiveAuthProvider();
-  const { mutate: updatePassword, isLoading } =
+  const { mutate: updatePassword, isPending } =
     useUpdatePassword<UpdatePasswordFormTypes>({
       v3LegacyAuthProviderCompatible: Boolean(authProvider?.isLegacy),
     });
@@ -120,7 +120,7 @@ export const UpdatePasswordPage: React.FC<UpdatePassworProps> = ({
             placeholder="●●●●●●●●"
             {...getInputProps("confirmPassword")}
           />
-          <Button mt="lg" fullWidth size="md" type="submit" loading={isLoading}>
+          <Button mt="lg" fullWidth size="md" type="submit" loading={isPending}>
             {translate("pages.updatePassword.buttons.submit", "Update")}
           </Button>
         </form>

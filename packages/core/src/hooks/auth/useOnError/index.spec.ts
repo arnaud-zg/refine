@@ -59,7 +59,7 @@ describe("v3LegacyAuthProviderCompatible useOnError Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     expect(onErrorMock).toBeCalledTimes(1);
@@ -94,7 +94,7 @@ describe("v3LegacyAuthProviderCompatible useOnError Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -140,7 +140,7 @@ describe("useOnError Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -174,7 +174,7 @@ describe("useOnError Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -213,7 +213,7 @@ describe("useOnError Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -255,7 +255,7 @@ describe("useOnError Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyCheckErrorMock).not.toHaveBeenCalled();
@@ -293,7 +293,7 @@ describe("useOnError Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyCheckErrorMock).toHaveBeenCalled();

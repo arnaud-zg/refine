@@ -31,7 +31,7 @@ export const AutoSaveIndicator: React.FC<AutoSaveIndicatorProps> = ({
     ),
     loading = (
       <Message
-        key="autoSave.loading"
+        key="autoSave.pending"
         defaultMessage="saving..."
         icon={<IconRefresh size="18px" />}
       />

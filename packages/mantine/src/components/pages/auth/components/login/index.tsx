@@ -81,7 +81,7 @@ export const LoginPage: React.FC<LoginProps> = ({
   const { onSubmit, getInputProps } = form;
 
   const authProvider = useActiveAuthProvider();
-  const { mutate: login, isLoading } = useLogin<LoginFormTypes>({
+  const { mutate: login, isPending } = useLogin<LoginFormTypes>({
     v3LegacyAuthProviderCompatible: Boolean(authProvider?.isLegacy),
   });
 
@@ -201,7 +201,7 @@ export const LoginPage: React.FC<LoginProps> = ({
               fullWidth
               size="md"
               type="submit"
-              loading={isLoading}
+              loading={isPending}
             >
               {translate("pages.login.signin", "Sign in")}
             </Button>

@@ -65,6 +65,7 @@ export const EditButton: React.FC<EditButtonProps> = ({
     action: "edit",
     params: { id: recordItemId ?? id, resource },
     queryOptions: {
+      queryKey: [recordItemId ?? id, resource],
       enabled: accessControlEnabled,
     },
   });

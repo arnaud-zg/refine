@@ -26,6 +26,7 @@ export const PostList = () => {
     resource: "categories",
     ids: categoryIds,
     queryOptions: {
+      queryKey: [],
       enabled: categoryIds.length > 0,
     },
   });

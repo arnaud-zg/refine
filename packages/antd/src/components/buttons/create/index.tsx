@@ -62,6 +62,7 @@ export const CreateButton: React.FC<CreateButtonProps> = ({
     resource: resource?.name,
     action: "create",
     queryOptions: {
+      queryKey: [],
       enabled: accessControlEnabled,
     },
     params: {

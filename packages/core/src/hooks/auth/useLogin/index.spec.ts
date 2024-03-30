@@ -783,7 +783,7 @@ describe("useLogin Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyLoginMock).not.toHaveBeenCalled();
@@ -821,7 +821,7 @@ describe("useLogin Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyLoginMock).toHaveBeenCalled();

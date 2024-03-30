@@ -64,13 +64,14 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 
   const mutationMode = mutationModeProp ?? mutationModeContext;
 
-  const { mutate, isLoading, variables } = useDelete();
+  const { mutate, isPending, variables } = useDelete();
 
   const { data } = useCan({
     resource: resource?.name,
     action: "delete",
     params: { id: recordItemId ?? id, resource },
     queryOptions: {
+      queryKey: [recordItemId ?? id, resource],
       enabled: accessControlEnabled,
     },
   });
@@ -98,7 +99,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
       cancelText={confirmCancelText ?? translate("buttons.cancel", "Cancel")}
       okType="danger"
       title={confirmTitle ?? translate("buttons.confirm", "Are you sure?")}
-      okButtonProps={{ disabled: isLoading }}
+      okButtonProps={{ disabled: isPending }}
       onConfirm={(): void => {
         if ((recordItemId ?? id) && identifier) {
           setWarnWhen(false);
@@ -130,7 +131,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
     >
       <Button
         danger
-        loading={(recordItemId ?? id) === variables?.id && isLoading}
+        loading={(recordItemId ?? id) === variables?.id && isPending}
         icon={<DeleteOutlined />}
         title={disabledTitle()}
         disabled={data?.can === false}

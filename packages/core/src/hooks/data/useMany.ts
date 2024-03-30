@@ -166,6 +166,7 @@ export const useMany = <
         ...(preferredMeta || {}),
       })
       .get(preferLegacyKeys),
+    // @ts-expect-error
     queryFn: ({ queryKey, pageParam, signal }) => {
       if (getMany) {
         return getMany({
@@ -175,6 +176,7 @@ export const useMany = <
             ...combinedMeta,
             queryContext: {
               queryKey,
+              // @ts-expect-error
               pageParam,
               signal,
             },
@@ -183,6 +185,7 @@ export const useMany = <
             ...combinedMeta,
             queryContext: {
               queryKey,
+              // @ts-expect-error
               pageParam,
               signal,
             },
@@ -198,6 +201,7 @@ export const useMany = <
               ...combinedMeta,
               queryContext: {
                 queryKey,
+                // @ts-expect-error
                 pageParam,
                 signal,
               },
@@ -206,6 +210,7 @@ export const useMany = <
               ...combinedMeta,
               queryContext: {
                 queryKey,
+                // @ts-expect-error
                 pageParam,
                 signal,
               },
@@ -215,7 +220,9 @@ export const useMany = <
       );
     },
     ...queryOptions,
+    // @ts-expect-error
     onSuccess: (data) => {
+      // @ts-expect-error
       queryOptions?.onSuccess?.(data);
 
       const notificationConfig =
@@ -227,6 +234,7 @@ export const useMany = <
     },
     onError: (err: TError) => {
       checkError(err);
+      // @ts-expect-error
       queryOptions?.onError?.(err);
 
       const notificationConfig =

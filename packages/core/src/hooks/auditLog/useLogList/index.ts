@@ -40,7 +40,7 @@ export const useLogList = <
   author,
   metaData,
   queryOptions,
-}: UseLogProps<TQueryFnData, TError, TData>): UseQueryResult<TData> => {
+}: UseLogProps<TQueryFnData, TError, TData>): UseQueryResult<TData, TError> => {
   const { get } = useContext(AuditLogContext);
   const { keys, preferLegacyKeys } = useKeys();
 

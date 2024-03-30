@@ -27,7 +27,7 @@ export type AutoSaveReturnType<
 };
 
 export type AutoSaveIndicatorElements = Partial<
-  Record<"success" | "error" | "loading" | "idle", React.ReactNode>
+  Record<"success" | "error" | "pending" | "idle", React.ReactNode>
 >;
 
 export type AutoSaveIndicatorProps<

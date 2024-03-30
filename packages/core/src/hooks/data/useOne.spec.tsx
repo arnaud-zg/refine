@@ -30,7 +30,7 @@ describe("useOne Hook", () => {
     );
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     const { status, data } = result.current;
@@ -104,7 +104,7 @@ describe("useOne Hook", () => {
         );
 
         await waitFor(() => {
-          expect(!result.current.isLoading).toBeTruthy();
+          expect(!result.current.isPending).toBeTruthy();
         });
 
         expect(onSubscribeMock).toBeCalled();
@@ -148,7 +148,7 @@ describe("useOne Hook", () => {
       );
 
       await waitFor(() => {
-        expect(!result.current.isLoading).toBeTruthy();
+        expect(!result.current.isPending).toBeTruthy();
       });
 
       expect(onSubscribeMock).not.toBeCalled();
@@ -176,7 +176,7 @@ describe("useOne Hook", () => {
       );
 
       await waitFor(() => {
-        expect(!result.current.isLoading).toBeTruthy();
+        expect(!result.current.isPending).toBeTruthy();
       });
 
       expect(onSubscribeMock).toBeCalled();
@@ -205,7 +205,7 @@ describe("useOne Hook", () => {
       );
 
       await waitFor(() => {
-        expect(!result.current.isLoading).toBeTruthy();
+        expect(!result.current.isPending).toBeTruthy();
       });
 
       expect(onSubscribeMock).toBeCalled();
@@ -904,13 +904,13 @@ describe("useOne Hook", () => {
     );
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeTruthy();
+      expect(result.current.isPending).toBeTruthy();
       expect(result.current.overtime.elapsedTime).toBe(900);
       expect(onInterval).toBeCalled();
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
       expect(result.current.overtime.elapsedTime).toBeUndefined();
     });
   });

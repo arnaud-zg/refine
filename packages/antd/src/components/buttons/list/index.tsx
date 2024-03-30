@@ -65,6 +65,7 @@ export const ListButton: React.FC<ListButtonProps> = ({
     resource: resource?.name,
     action: "list",
     queryOptions: {
+      queryKey: [],
       enabled: accessControlEnabled,
     },
     params: {

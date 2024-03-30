@@ -29,9 +29,9 @@ export const AutoSaveIndicator: React.FC<AutoSaveIndicatorProps> = ({
         icon={<ExclamationCircleOutlined />}
       />
     ),
-    loading = (
+    pending = (
       <Message
-        key="autoSave.loading"
+        key="autoSave.pending"
         defaultMessage="saving..."
         icon={<SyncOutlined />}
       />
@@ -51,7 +51,7 @@ export const AutoSaveIndicator: React.FC<AutoSaveIndicatorProps> = ({
       elements={{
         success,
         error,
-        loading,
+        pending,
         idle,
       }}
     />

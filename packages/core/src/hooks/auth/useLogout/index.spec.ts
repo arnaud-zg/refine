@@ -57,7 +57,7 @@ describe("v3LegacyAuthProviderCompatible useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      return !result.current?.isLoading;
+      return !result.current?.isPending;
     });
 
     await act(async () => {
@@ -93,7 +93,7 @@ describe("v3LegacyAuthProviderCompatible useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      return !result.current?.isLoading;
+      return !result.current?.isPending;
     });
 
     await act(async () => {
@@ -220,7 +220,7 @@ describe("v3LegacyAuthProviderCompatible useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -251,7 +251,7 @@ describe("v3LegacyAuthProviderCompatible useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -337,7 +337,7 @@ describe("useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      return !result.current?.isLoading;
+      return !result.current?.isPending;
     });
 
     await act(async () => {
@@ -366,7 +366,7 @@ describe("useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      return !result.current?.isLoading;
+      return !result.current?.isPending;
     });
 
     await act(async () => {
@@ -509,7 +509,7 @@ describe("useLogout Hook", () => {
     });
 
     await waitFor(() => {
-      expect(!result.current.isLoading).toBeTruthy();
+      expect(!result.current.isPending).toBeTruthy();
     });
 
     await act(async () => {
@@ -753,7 +753,7 @@ describe("useLogout Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyLogoutMock).not.toHaveBeenCalled();
@@ -791,7 +791,7 @@ describe("useLogout Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyLogoutMock).toHaveBeenCalled();

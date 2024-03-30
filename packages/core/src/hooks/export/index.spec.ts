@@ -200,7 +200,7 @@ describe("useExport Hook", () => {
       await result.current.triggerExport();
     });
 
-    expect(result.current.isLoading).toEqual(false);
+    expect(result.current.isPending).toEqual(false);
     expect(onError).toBeCalledWith(Error("Error"));
 
     expect(unparse).not.toBeCalled();

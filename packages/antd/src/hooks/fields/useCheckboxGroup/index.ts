@@ -15,6 +15,7 @@ import {
 export type UseCheckboxGroupReturnType<
   TData extends BaseRecord = BaseRecord,
   TOption extends BaseOption = BaseOption,
+  TError = HttpError,
 > = {
   checkboxGroupProps: Omit<
     React.ComponentProps<typeof Checkbox.Group>,
@@ -22,7 +23,7 @@ export type UseCheckboxGroupReturnType<
   > & {
     options: TOption[];
   };
-  queryResult: QueryObserverResult<GetListResponse<TData>>;
+  queryResult: QueryObserverResult<GetListResponse<TData>, TError>;
 };
 
 type UseCheckboxGroupProps<TQueryFnData, TError, TData> = Omit<

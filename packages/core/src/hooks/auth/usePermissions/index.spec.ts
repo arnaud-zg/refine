@@ -45,7 +45,7 @@ describe("usePermissions Hook", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(result.current.data).toEqual("Not Authenticated");
@@ -116,7 +116,7 @@ describe("v3LegacyAuthProviderCompatible usePermissions Hook", () => {
     );
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
     expect(getPermissionMock).toHaveBeenCalledTimes(1);
     expect(result.current.data).toEqual(["admin"]);
@@ -124,7 +124,7 @@ describe("v3LegacyAuthProviderCompatible usePermissions Hook", () => {
     result.current.refetch();
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
     expect(getPermissionMock).toHaveBeenCalledTimes(2);
     expect(result.current.data).toEqual(["admin"]);
@@ -193,7 +193,7 @@ describe("v3LegacyAuthProviderCompatible usePermissions Hook", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyGetPermissionMock).toHaveBeenCalledWith({
@@ -228,7 +228,7 @@ describe("usePermissions Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyGetPermissionMock).not.toHaveBeenCalled();
@@ -261,7 +261,7 @@ describe("usePermissions Hook authProvider selection", () => {
     );
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyGetPermissionMock).toHaveBeenCalled();

@@ -843,13 +843,13 @@ describe("useForm Hook", () => {
       });
 
       await waitFor(() => {
-        expect(result.current.mutationResult?.isLoading).toBeTruthy();
+        expect(result.current.mutationResult?.isPending).toBeTruthy();
         expect(result.current.overtime.elapsedTime).toBe(900);
         expect(onInterval).toBeCalled();
       });
 
       await waitFor(() => {
-        expect(!result.current.mutationResult?.isLoading).toBeTruthy();
+        expect(!result.current.mutationResult?.isPending).toBeTruthy();
         expect(result.current.overtime.elapsedTime).toBeUndefined();
       });
     });
@@ -1076,13 +1076,13 @@ describe("useForm Hook", () => {
       });
 
       await waitFor(() => {
-        expect(result.current.mutationResult?.isLoading).toBeTruthy();
+        expect(result.current.mutationResult?.isPending).toBeTruthy();
         expect(result.current.overtime.elapsedTime).toBe(900);
         expect(onInterval).toBeCalled();
       });
 
       await waitFor(() => {
-        expect(!result.current.mutationResult?.isLoading).toBeTruthy();
+        expect(!result.current.mutationResult?.isPending).toBeTruthy();
         expect(result.current.overtime.elapsedTime).toBeUndefined();
       });
     });

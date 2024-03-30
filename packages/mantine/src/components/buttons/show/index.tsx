@@ -65,6 +65,7 @@ export const ShowButton: React.FC<ShowButtonProps> = ({
     action: "show",
     params: { id: recordItemId ?? id, resource },
     queryOptions: {
+      queryKey: [recordItemId ?? id, resource],
       enabled: accessControlEnabled,
     },
   });

@@ -1,32 +1,32 @@
-import { useCallback, useMemo, useState } from "react";
 import { QueryObserverResult, UseQueryOptions } from "@tanstack/react-query";
-import uniqBy from "lodash/uniqBy";
 import debounce from "lodash/debounce";
 import get from "lodash/get";
+import uniqBy from "lodash/uniqBy";
+import { useCallback, useMemo, useState } from "react";
 
+import { pickNotDeprecated } from "@definitions/helpers";
 import { useList, useMany, useMeta } from "@hooks";
 import {
-  CrudSorting,
+  BaseKey,
   BaseOption,
   BaseRecord,
-  GetManyResponse,
-  GetListResponse,
   CrudFilters,
-  SuccessErrorNotification,
+  CrudSorting,
+  GetListResponse,
+  GetManyResponse,
   HttpError,
   LiveModeProps,
-  BaseKey,
-  Pagination,
   MetaQuery,
+  Pagination,
   Prettify,
+  SuccessErrorNotification,
 } from "../../interfaces";
-import { pickNotDeprecated } from "@definitions/helpers";
-import { useResource } from "../resource/useResource/index";
 import { BaseListProps } from "../data/useList";
+import { useResource } from "../resource/useResource/index";
 import {
-  useLoadingOvertime,
   UseLoadingOvertimeOptionsProps,
   UseLoadingOvertimeReturnType,
+  useLoadingOvertime,
 } from "../useLoadingOvertime";
 
 export type UseSelectProps<TQueryFnData, TError, TData> = {
@@ -159,7 +159,7 @@ export type UseSelectReturnType<
   TOption extends BaseOption = BaseOption,
 > = {
   queryResult: QueryObserverResult<GetListResponse<TData>, TError>;
-  defaultValueQueryResult: QueryObserverResult<GetManyResponse<TData>>;
+  defaultValueQueryResult: QueryObserverResult<GetManyResponse<TData>, TError>;
   onSearch: (value: string) => void;
   options: TOption[];
 } & UseLoadingOvertimeReturnType;
@@ -277,6 +277,7 @@ export const useSelect = <
       ...defaultValueQueryOptions,
       enabled:
         defaultValues.length > 0 && (defaultValueQueryOptions?.enabled ?? true),
+      // @ts-expect-error
       onSuccess: (data) => {
         defaultValueQueryOnSuccess(data);
         defaultValueQueryOptions?.onSuccess?.(data);
@@ -317,8 +318,10 @@ export const useSelect = <
     hasPagination,
     queryOptions: {
       ...queryOptions,
+      // @ts-expect-error
       onSuccess: (data) => {
         defaultQueryOnSuccess(data);
+        // @ts-expect-error
         queryOptions?.onSuccess?.(data);
       },
     },

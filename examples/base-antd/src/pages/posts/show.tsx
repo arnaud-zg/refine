@@ -17,6 +17,7 @@ export const PostShow = () => {
       resource: "categories",
       id: record?.category.id || "",
       queryOptions: {
+        queryKey: [],
         enabled: !!record,
       },
     });

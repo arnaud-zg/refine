@@ -642,7 +642,7 @@ describe("useRegister Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyRegisterMock).not.toHaveBeenCalled();
@@ -682,7 +682,7 @@ describe("useRegister Hook authProvider selection", () => {
     });
 
     await waitFor(() => {
-      expect(result.current.isLoading).toBeFalsy();
+      expect(result.current.isPending).toBeFalsy();
     });
 
     expect(legacyRegisterMock).toHaveBeenCalled();

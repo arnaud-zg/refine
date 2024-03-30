@@ -122,6 +122,7 @@ export const useCustomMutation = <
     useCustomMutationParams<TData, TError, TVariables>,
     unknown
   >(
+    // @ts-expect-error
     ({
       url,
       method,
@@ -152,11 +153,16 @@ export const useCustomMutation = <
     },
     {
       onSuccess: (
+        // @ts-expect-error
         data,
         {
+          // @ts-expect-error
           successNotification: successNotificationFromProp,
+          // @ts-expect-error
           config,
+          // @ts-expect-error
           meta,
+          // @ts-expect-error
           metaData,
         },
       ) => {
@@ -173,10 +179,15 @@ export const useCustomMutation = <
       onError: (
         err: TError,
         {
+          // @ts-expect-error
           errorNotification: errorNotificationFromProp,
+          // @ts-expect-error
           method,
+          // @ts-expect-error
           config,
+          // @ts-expect-error
           meta,
+          // @ts-expect-error
           metaData,
         },
       ) => {
@@ -214,7 +225,7 @@ export const useCustomMutation = <
   );
 
   const { elapsedTime } = useLoadingOvertime({
-    isLoading: mutation.isLoading,
+    isLoading: mutation.isPending,
     interval: overtimeOptions?.interval,
     onInterval: overtimeOptions?.onInterval,
   });

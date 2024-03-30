@@ -61,7 +61,7 @@ export const LoginPage: React.FC<LoginProps> = ({
   const ActiveLink = routerType === "legacy" ? LegacyLink : Link;
 
   const authProvider = useActiveAuthProvider();
-  const { mutate: login, isLoading } = useLogin<LoginFormTypes>({
+  const { mutate: login, isPending } = useLogin<LoginFormTypes>({
     v3LegacyAuthProviderCompatible: Boolean(authProvider?.isLegacy),
   });
 
@@ -230,7 +230,7 @@ export const LoginPage: React.FC<LoginProps> = ({
                 type="primary"
                 size="large"
                 htmlType="submit"
-                loading={isLoading}
+                loading={isPending}
                 block
               >
                 {translate("pages.login.signin", "Sign in")}

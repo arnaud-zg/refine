@@ -58,7 +58,7 @@ export const RegisterPage: React.FC<RegisterProps> = ({
   const ActiveLink = routerType === "legacy" ? LegacyLink : Link;
 
   const authProvider = useActiveAuthProvider();
-  const { mutate: register, isLoading } = useRegister<RegisterFormTypes>({
+  const { mutate: register, isPending } = useRegister<RegisterFormTypes>({
     v3LegacyAuthProviderCompatible: Boolean(authProvider?.isLegacy),
   });
 
@@ -218,7 +218,7 @@ export const RegisterPage: React.FC<RegisterProps> = ({
               type="primary"
               size="large"
               htmlType="submit"
-              loading={isLoading}
+              loading={isPending}
               block
             >
               {translate("pages.register.buttons.submit", "Sign up")}
